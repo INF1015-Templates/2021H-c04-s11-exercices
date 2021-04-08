@@ -1,10 +1,14 @@
-# Introduction aux interfaces graphiques
+# Exceptions et autres éléments divers
 
-## Fichiers `Counter.*` et `CounterWindow.*`
+## Dans `company/`
 
-Exemple de compteur des notes de cours sur les signaux et slots, mais avec un GUI simple pour aller avec.
+L'exemple de gestionnaire d'employés de la semaine dernière, mais seulement la partie modèle dans son propre namespace.
 
-## Autres fichiers
+## Dans `view/`
 
-L'exemple de gestionnaire d'employés des slides, mais complet, fonctionnel et utilisant Qt Designer plutôt qu'en faisant des layout en code.
+Les fichiers sources et d'interface de la couche vue de l'exemple de compagnie.
+
+## Dans `utils`
+
+Classes et fonctions utilitaires pour les exemples.
 

@@ -1,13 +1,16 @@
 #pragma once
 
-#include <QMainWindow>
-#include <QListWidget>
-#include <QString>
+#include <cstddef>
+#include <cstdint>
 
 #include <memory>
 #include <vector>
 
-#include "Company.hpp"
+#include <QMainWindow>
+#include <QListWidget>
+#include <QString>
+
+#include <company/Company.hpp>
 
 using namespace std;
 
@@ -16,6 +19,9 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class CompanyWindow; }
 QT_END_NAMESPACE
 
+namespace view {
+
+using namespace company;
 
 class CompanyWindow : public QMainWindow {
 	Q_OBJECT
@@ -80,3 +86,5 @@ private:
 	vector<unique_ptr<Employee>> added_;
 	int currentFilterIndex_ = 0;
 };
+
+}

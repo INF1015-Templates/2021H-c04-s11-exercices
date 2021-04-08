@@ -31,38 +31,87 @@
  * Version: 14/1.0
  */
 
-#ifndef SECRETARY_H
-#define SECRETARY_H
+#pragma once
 
 #include <string>
+#include <vector>
 
 #include "Employee.hpp"
 using namespace std;
 
+namespace company {
+
 /**
- * @brief The Secretary class, a special type of Employee
+ * @brief The Manager class, a special type of Employee
  */
-class Secretary : public Employee
+class Manager : public Employee
 {
 public:
 	// Constructors
 	/**
-	* @brief Secretary The default constructor
+	* @brief Manager The default constructor
 	*/
-	Secretary();
+	Manager();
 	/**
-	* @brief Secretary Constructor
-	* @param name The name of the secretary
-	* @param salary The salary of the secretary
+	* @brief Manager Constructor
+	* @param name The name of the manager
+	* @param salary The salary of the manager
 	*/
-	Secretary(string name, double salary);
+	Manager(string name, double salary);
+	/**
+	* @brief Manager Constructor
+	* @param name The name of the manager
+	* @param salary The salary of the manager
+	* @param bonus The bonus (in percent) of the manager
+	*/
+	Manager(string name, double salary, double bonus);
 
 	// Getters
 	/**
-	* @brief getName To get the name of the secretary
-	* @return The name of the secretary, and its status (Secretary)
+	* @brief getName To get the name of the manager
+	* @return The name of the manager, and its status (Manager)
 	*/
 	virtual string getName() const;
+	/**
+	* @brief getSalary To get the salary of the manager
+	* @return The salary of the manager, including its bonus
+	*/
+	virtual double getSalary() const;
+	/**
+	* @brief getBonus To get the bonus of the manager
+	* @return The bonus of the manager (in percent)
+	*/
+	double getBonus() const;
+	/**
+	* @brief getEmployee To get an employee of the manager
+	* @param name The name of the employee to get
+	* @return The employee of that name, or a nullptr if not found
+	*/
+	Employee* getEmployee(string name) const;
+
+	// Setters
+	/**
+	* @brief setBonus To change the bonus of the manager
+	* @param bonus The new bonus (in percent)
+	*/
+	void setBonus(double bonus);
+	/**
+	* @brief addEmployee To add an employee to the manager
+	* @param employee The employee to add
+	*/
+	void addEmployee(Employee* employee);	
+
+private:
+	// Attributes
+	/**
+	* @brief bonus_ To store the bonus of the manager
+	*/
+	double bonus_;
+	/**
+	* @brief managedEmployees_ To store the employees managed by the manager
+	*/
+	vector<Employee*> managedEmployees_;
 };
 
-#endif // SECRETARY_H
+}
+

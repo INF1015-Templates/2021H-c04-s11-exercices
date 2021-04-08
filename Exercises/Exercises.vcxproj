@@ -13,8 +13,8 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{19A71A44-3CDB-4EE3-9C2F-32A113007C02}</ProjectGuid>
     <Keyword>QtVS_v304</Keyword>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
-    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0</WindowsTargetPlatformVersion>
     <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -61,11 +61,13 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir);$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -77,7 +79,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -90,38 +92,34 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Manager.cpp" />
-    <ClCompile Include="SearchEmployeeByName.cpp" />
-    <ClCompile Include="Secretary.cpp" />
-    <QtRcc Include="CounterWindow.qrc" />
-    <QtUic Include="CompanyWindow.ui" />
-    <QtUic Include="CounterWindow.ui" />
-    <QtMoc Include="CounterWindow.hpp" />
-    <ClCompile Include="Company.cpp" />
-    <ClCompile Include="CompanyWindow.cpp" />
-    <ClCompile Include="CounterWindow.cpp" />
-    <ClCompile Include="Employee.cpp" />
-    <ClCompile Include="InsertInMap.cpp" />
+    <ClCompile Include="company\Manager.cpp" />
+    <ClCompile Include="company\SearchEmployeeByName.cpp" />
+    <ClCompile Include="company\Secretary.cpp" />
+    <QtUic Include="view\CompanyWindow.ui" />
+    <ClCompile Include="company\Company.cpp" />
+    <ClCompile Include="view\CompanyWindow.cpp" />
+    <ClCompile Include="company\Employee.cpp" />
+    <ClCompile Include="company\InsertInMap.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Counter.hpp" />
+    <QtMoc Include="view\CompanyWindow.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="CompanyWindow.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Employee.hpp" />
-    <ClInclude Include="InsertInMap.hpp" />
-    <ClInclude Include="Manager.hpp" />
-    <QtMoc Include="Company.hpp" />
-    <ClInclude Include="SearchEmployeeByName.hpp" />
-    <ClInclude Include="Secretary.hpp" />
+    <ClInclude Include="company\Employee.hpp" />
+    <ClInclude Include="company\InsertInMap.hpp" />
+    <ClInclude Include="company\Manager.hpp" />
+    <ClInclude Include="utils\List.hpp" />
+    <ClInclude Include="utils\MyClass.hpp" />
+    <ClInclude Include="utils\print.hpp" />
+    <QtMoc Include="company\Company.hpp" />
+    <ClInclude Include="company\SearchEmployeeByName.hpp" />
+    <ClInclude Include="company\Secretary.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

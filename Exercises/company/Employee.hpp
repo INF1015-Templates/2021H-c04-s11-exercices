@@ -31,85 +31,61 @@
  * Version: 14/1.0
  */
 
-#ifndef MANAGER_H
-#define MANAGER_H
+#pragma once
 
 #include <string>
-#include <vector>
-
-#include "Employee.hpp"
 using namespace std;
 
+namespace company {
+
 /**
- * @brief The Manager class, a special type of Employee
+ * @brief The Employee class to describe an employee
  */
-class Manager : public Employee
+class Employee
 {
 public:
 	// Constructors
 	/**
-	* @brief Manager The default constructor
-	*/
-	Manager();
-	/**
-	* @brief Manager Constructor
-	* @param name The name of the manager
-	* @param salary The salary of the manager
-	*/
-	Manager(string name, double salary);
-	/**
-	* @brief Manager Constructor
-	* @param name The name of the manager
-	* @param salary The salary of the manager
-	* @param bonus The bonus (in percent) of the manager
-	*/
-	Manager(string name, double salary, double bonus);
+	 * @brief Employee The constructor receiving the employee name and its salary
+	 * @param name The employee name (default: unknown)
+	 * @param salary The employee salary (default: 0)
+	 */
+	Employee(string name = "unknown", double salary = 0);
+    /**
+     * @brief ~Employee The destructor
+     */
+    virtual ~Employee();
 
 	// Getters
 	/**
-	* @brief getName To get the name of the manager
-	* @return The name of the manager, and its status (Manager)
-	*/
-	virtual string getName() const;
-	/**
-	* @brief getSalary To get the salary of the manager
-	* @return The salary of the manager, including its bonus
-	*/
+	 * @brief getSalary To get the employee salary
+	 * @return The employee salary
+	 */
 	virtual double getSalary() const;
 	/**
-	* @brief getBonus To get the bonus of the manager
-	* @return The bonus of the manager (in percent)
-	*/
-	double getBonus() const;
-	/**
-	* @brief getEmployee To get an employee of the manager
-	* @param name The name of the employee to get
-	* @return The employee of that name, or a nullptr if not found
-	*/
-	Employee* getEmployee(string name) const;
+	 * @brief getName To get the employee name
+	 * @return The employee name
+	 */
+	virtual string getName() const;
 
 	// Setters
 	/**
-	* @brief setBonus To change the bonus of the manager
-	* @param bonus The new bonus (in percent)
-	*/
-	void setBonus(double bonus);
-	/**
-	* @brief addEmployee To add an employee to the manager
-	* @param employee The employee to add
-	*/
-	void addEmployee(Employee* employee);	
+	 * @brief setSalary To change the employee salary
+	 * @param salary The new salary of the employee
+	 */
+	void setSalary(double salary);
 
 private:
 	// Attributes
 	/**
-	* @brief bonus_ To store the bonus of the manager
-	*/
-	double bonus_;
+	 * @brief name_ To store the employee name
+	 */
+	string name_;
 	/**
-	* @brief managedEmployees_ To store the employees managed by the manager
-	*/
-	vector<Employee*> managedEmployees_;
+	 * @brief salary_ To store the employee salary
+	 */
+	double salary_;
 };
 
-#endif // MANAGER_H
+}
+

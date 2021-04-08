@@ -31,28 +31,56 @@
  * Version: 14/1.0
  */
 
-#include "Employee.hpp"
+#include "Manager.hpp"
 
-Employee::Employee(string name, double salary)
-    : name_(name), salary_(salary)
+namespace company {
+
+Manager::Manager()
+	: Employee(), bonus_(0)
 {
 }
 
-Employee::~Employee()
+Manager::Manager(string name, double salary)
+	: Employee(name, salary), bonus_(15)
 {
 }
 
-double Employee::getSalary() const
+Manager::Manager(string name, double salary, double bonus)
+	: Employee(name, salary), bonus_(bonus)
 {
-	return salary_;
 }
 
-void Employee::setSalary(double salary)
-{
-	salary_ = salary;
+string Manager::getName() const {
+	return Employee::getName() + " (Manager)";
 }
 
-string Employee::getName() const
-{
-	return name_;
+double Manager::getSalary() const {
+	return Employee::getSalary() * (1 + (bonus_ / 100.0));
+}
+
+double Manager::getBonus() const {
+	return bonus_;
+}
+
+Employee* Manager::getEmployee(string name) const {
+    for (unsigned int i = 0; i < managedEmployees_.size(); i++) {
+		if (managedEmployees_[i]->getName() == name) {
+			return managedEmployees_[i];
+		}
+	}
+
+	/* Return a nullptr because we didn't
+	 * find the Employee we searched for
+	 */
+	return nullptr;
+}
+
+void Manager::setBonus(double bonus) {
+	bonus_ = bonus;
+}
+
+void Manager::addEmployee(Employee* employee) {
+	managedEmployees_.push_back(employee);
+}
+
 }

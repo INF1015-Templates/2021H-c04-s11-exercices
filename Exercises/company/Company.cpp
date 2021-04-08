@@ -39,6 +39,8 @@ using namespace std;
 #include "SearchEmployeeByName.hpp"
 #include "InsertInMap.hpp"
 
+namespace company {
+
 Company::Company()
 	: name_("unknown"), president_(nullptr)
 {
@@ -235,3 +237,6 @@ multimap<string, Employee*> Company::getEmployeesPerName() const {
 
     return employeesPerName;
 }
+
+}
+

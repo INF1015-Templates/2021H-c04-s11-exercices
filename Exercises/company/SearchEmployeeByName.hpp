@@ -28,21 +28,40 @@
  *
  * This file has been created for the purpose of the INF1010
  * course of École Polytechnique de Montréal.
- * Version: 14/1.0
  */
 
-#include "Secretary.hpp"
+#pragma once
 
-Secretary::Secretary()
-	: Employee()
+#include "Employee.hpp"
+
+namespace company {
+
+/**
+ * @brief The SearchEmployeeByName class, a functer to search for
+ * an employee in a container using its name
+ */
+class SearchEmployeeByName
 {
+public:
+    /**
+     * @brief SearchEmployeeByName The constructor
+     * @param name The name of the employee we want to search for
+     */
+    SearchEmployeeByName(string name);
+    /**
+     * @brief operator() The operator parenthesis to verify if the given
+     * employee is the one we are searching for
+     * @param employee An employee
+     * @return true if the employee received as parameter is the one
+     * we search for, false else
+     */
+    bool operator()(Employee* employee);
+
+    /**
+     * @brief name_ To store the name of the employee to search for
+     */
+    string name_;
+};
+
 }
 
-Secretary::Secretary(string name, double salary)
-	: Employee(name, salary)
-{
-}
-
-string Secretary::getName() const {
-	return Employee::getName() + " (Secretary)";
-}

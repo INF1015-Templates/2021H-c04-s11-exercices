@@ -31,8 +31,7 @@
  * Version: 14/1.0
  */
 
-#ifndef COMPANY_H
-#define COMPANY_H
+#pragma once
 
 #include <string>
 #include <vector>
@@ -43,6 +42,9 @@ using namespace std;
 #include <QObject>
 
 #include "Employee.hpp"
+
+
+namespace company {
 
 /**
  * @brief The Company class, to describe a company
@@ -214,4 +216,5 @@ private:
  */
 ostream& operator<<(ostream& os, const Company& company);
 
-#endif // COMPANY_H
+}
+

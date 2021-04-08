@@ -6,10 +6,10 @@
 
 #include <cppitertools/itertools.hpp>
 
-#include "Company.hpp"
-#include "Employee.hpp"
-#include "Secretary.hpp"
-#include "Manager.hpp"
+#include <company/Company.hpp>
+#include <company/Employee.hpp>
+#include <company/Secretary.hpp>
+#include <company/Manager.hpp>
 
 #include "CompanyWindow.hpp"
 #include "ui_CompanyWindow.h"
@@ -17,6 +17,8 @@
 using namespace std;
 using namespace iter;
 
+
+namespace view {
 
 CompanyWindow::CompanyWindow(QWidget* parent)
 : CompanyWindow(make_unique<Company>(), nullptr, parent) { }
@@ -271,6 +273,7 @@ void CompanyWindow::employeeHasBeenDeleted(Employee* e) {
 	cleanDisplay();
 }
 
+}
 
-Q_DECLARE_METATYPE(Employee*)
+Q_DECLARE_METATYPE(company::Employee*)
 

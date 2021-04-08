@@ -1,9 +1,10 @@
-#ifndef INSERTINMAP_H
-#define INSERTINMAP_H
+#pragma once
 
 #include "Employee.hpp"
 
 #include <map>
+
+namespace company {
 
 class InsertInMap {
 public:
@@ -13,4 +14,5 @@ private:
     multimap<string, Employee*> &m_;
 };
 
-#endif // INSERTINMAP_H
+}
+

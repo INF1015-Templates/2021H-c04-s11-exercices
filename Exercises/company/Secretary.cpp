@@ -28,17 +28,25 @@
  *
  * This file has been created for the purpose of the INF1010
  * course of École Polytechnique de Montréal.
+ * Version: 14/1.0
  */
 
+#include "Secretary.hpp"
 
-#include "SearchEmployeeByName.hpp"
+namespace company {
 
-SearchEmployeeByName::SearchEmployeeByName(string name)
-    : name_(name)
+Secretary::Secretary()
+	: Employee()
 {
 }
 
-bool SearchEmployeeByName::operator()(Employee* employee)
+Secretary::Secretary(string name, double salary)
+	: Employee(name, salary)
 {
-    return (employee->Employee::getName() == name_);
+}
+
+string Secretary::getName() const {
+	return Employee::getName() + " (Secretary)";
+}
+
 }

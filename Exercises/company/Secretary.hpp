@@ -31,59 +31,39 @@
  * Version: 14/1.0
  */
 
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
+#pragma once
 
 #include <string>
+
+#include "Employee.hpp"
 using namespace std;
 
+namespace company {
+
 /**
- * @brief The Employee class to describe an employee
+ * @brief The Secretary class, a special type of Employee
  */
-class Employee
+class Secretary : public Employee
 {
 public:
 	// Constructors
 	/**
-	 * @brief Employee The constructor receiving the employee name and its salary
-	 * @param name The employee name (default: unknown)
-	 * @param salary The employee salary (default: 0)
-	 */
-	Employee(string name = "unknown", double salary = 0);
-    /**
-     * @brief ~Employee The destructor
-     */
-    virtual ~Employee();
+	* @brief Secretary The default constructor
+	*/
+	Secretary();
+	/**
+	* @brief Secretary Constructor
+	* @param name The name of the secretary
+	* @param salary The salary of the secretary
+	*/
+	Secretary(string name, double salary);
 
 	// Getters
 	/**
-	 * @brief getSalary To get the employee salary
-	 * @return The employee salary
-	 */
-	virtual double getSalary() const;
-	/**
-	 * @brief getName To get the employee name
-	 * @return The employee name
-	 */
+	* @brief getName To get the name of the secretary
+	* @return The name of the secretary, and its status (Secretary)
+	*/
 	virtual string getName() const;
-
-	// Setters
-	/**
-	 * @brief setSalary To change the employee salary
-	 * @param salary The new salary of the employee
-	 */
-	void setSalary(double salary);
-
-private:
-	// Attributes
-	/**
-	 * @brief name_ To store the employee name
-	 */
-	string name_;
-	/**
-	 * @brief salary_ To store the employee salary
-	 */
-	double salary_;
 };
 
-#endif // EMPLOYEE_H
+}

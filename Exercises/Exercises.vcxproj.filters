@@ -21,78 +21,85 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <QtRcc Include="CounterWindow.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-    <QtUic Include="CounterWindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtMoc Include="CounterWindow.hpp">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="CounterWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{b1e18aa6-83e8-428d-8900-23c7add150f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\company">
+      <UniqueIdentifier>{9699c7db-1911-4af3-b98a-155a8e9faecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\company">
+      <UniqueIdentifier>{eaa5788a-cad1-4574-898a-95d121059d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{e708c807-2d95-4a55-9616-669d01798bb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{0c8b1ac7-6158-4fde-9e80-06687dde64b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CompanyWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="view\CompanyWindow.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
-    <ClCompile Include="Company.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\InsertInMap.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
-    <ClCompile Include="Employee.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\Employee.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
-    <ClCompile Include="InsertInMap.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\Company.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\Manager.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
-    <ClCompile Include="SearchEmployeeByName.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\SearchEmployeeByName.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
-    <ClCompile Include="Secretary.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="company\Secretary.cpp">
+      <Filter>Source Files\company</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Counter.hpp">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="company\Company.hpp">
+      <Filter>Header Files\company</Filter>
     </QtMoc>
-    <QtMoc Include="CompanyWindow.hpp">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Company.hpp">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="view\CompanyWindow.hpp">
+      <Filter>Header Files\view</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="CompanyWindow.ui">
+    <QtUic Include="view\CompanyWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SearchEmployeeByName.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="company\Employee.hpp">
+      <Filter>Header Files\company</Filter>
     </ClInclude>
-    <ClInclude Include="Secretary.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="company\InsertInMap.hpp">
+      <Filter>Header Files\company</Filter>
     </ClInclude>
-    <ClInclude Include="Employee.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="company\Manager.hpp">
+      <Filter>Header Files\company</Filter>
     </ClInclude>
-    <ClInclude Include="InsertInMap.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="company\SearchEmployeeByName.hpp">
+      <Filter>Header Files\company</Filter>
     </ClInclude>
-    <ClInclude Include="Manager.hpp">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="company\Secretary.hpp">
+      <Filter>Header Files\company</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\List.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MyClass.hpp">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\print.hpp">
+      <Filter>Header Files\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -18,6 +18,13 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>List of employees</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QComboBox" name="showCombobox">
         <item>
          <property name="text">
