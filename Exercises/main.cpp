@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <cstdint>
 
+#include <cassert>
 #include <fstream>
 #include <filesystem>
 
@@ -29,7 +30,7 @@ int runQtExample(int argc, char* argv[]) {
 					tr("Unhandled exception caught."),
 					tr(e.what())
 				);
-				exit(EXIT_FAILURE);
+				QApplication::exit(EXIT_FAILURE);
 				return false;
 			}
 		}
@@ -44,14 +45,16 @@ int runQtExample(int argc, char* argv[]) {
 void runListExample() {
 	using namespace utils;
 
-	auto hasDataLeft = [] (istream& file) {
+	static auto hasDataLeft = [] (istream& file) {
 		return not(file.eof() or ws(file).eof());
 	};
 
 	try {
 		List<int> values;
+
 		filesystem::remove("values.txt");
-		ofstream("values.txt") << "1 42 69 popf 9000 popb popb popf popf 42 0xBEEF 0xRAWR";
+		ofstream("values.txt") << "1 42 69 popf 9000 popb popb popf popf henlo 42 0xBEEF 0xRAWR";
+
 		ifstream file("values.txt");
 		file.exceptions(ios::failbit);
 		while (hasDataLeft(file)) {
@@ -80,10 +83,12 @@ void runListExample() {
 }
 
 void runRaiiExample() {
+	using namespace utils;
+
 	{
 		try {
 			cout << "---A---" << "\n";
-			MyClass foo;
+			unique_ptr<MyClass> foo = make_unique<MyClass>();
 			throw 42;
 			cout << "---B---" << "\n";
 		} catch (...) {
@@ -94,16 +99,15 @@ void runRaiiExample() {
 	cout << "- - - - - - - - - - - - - - - - - - -" << "\n";
 	{
 		struct Spam {
-			Spam() : m(new MyClass) {
+			Spam() : m(make_unique<MyClass>()) {
 				printDefCtor("Spam");
-				throw 42;
+				{ throw 42; }
 			}
 			~Spam() {
-				delete m;
 				printDtor("Spam");
 			}
 
-			MyClass* m;
+			unique_ptr<MyClass> m;
 		};
 		try {
 			cout << "---A---" << "\n";
@@ -116,9 +120,68 @@ void runRaiiExample() {
 	}
 }
 
+double fn1_assert(double x, double y) {
+	assert(x != y);
+	return (x+y)/(x-y);
+}
+
+pair<double, bool> fn1_pair(double x, double y) {
+	return {(x+y)/(x-y), x != y};
+}
+
+optional<double> fn1_opt(double x, double y) {
+	if (x == y)
+		return {};
+	return (x+y)/(x-y);
+}
+
+double fn1_except(double x, double y) {
+	if (x == y)
+		// Erreur dont on peut récupérer.
+		throw logic_error("Div by 0");
+	return (x+y)/(x-y);
+}
+
+void runSimpleExceptExample() {
+
+	auto&& [res, ok] = fn1_pair(5, 5);
+	if (ok)
+		cout << res << "\n";
+	else
+		cout << "Numerical error" << "\n";
+
+	optional<double> res2 = fn1_opt(5, 5);
+	if (res2)
+		cout << *res2 << "\n";
+	else
+		cout << "Numerical error" << "\n";
+
+	try {
+		double res3 = fn1_except(5, 5);
+		cout << res3 << "\n";
+	} catch (logic_error& e) {
+		cout << "Error: " << e.what() << "\n";
+	}
+
+	cout << "Ok I'm done" << "\n";
+}
+
+
 
 int main(int argc, char* argv[]) {
-	//return runQtExample(argc, argv);
-	//runListExample();
-	runRaiiExample();
+	return runQtExample(argc, argv);
+
+	//try {
+	//	runListExample();
+	//} catch (system_error& e) {
+	//	cout << e.what() << e.code();
+	//} catch (exception& e) {
+	//	cout << e.what();
+	//} catch (...) {
+	//	cout << "Unrecognized exception caught" << "\n";
+	//}
+
+	//runRaiiExample();
+	
+	//runSimpleExceptExample();
 }

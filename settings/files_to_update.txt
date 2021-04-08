@@ -3,4 +3,6 @@ settings/variables.txt
 
 README.md
 
-Exercises/CompanyWindow.cpp
+Exercises/main.cpp
+Exercises/utils/MyClass.cpp
+Exercises/utils/print.cpp

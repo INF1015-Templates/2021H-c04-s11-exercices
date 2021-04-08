@@ -15,6 +15,8 @@ using namespace std;
 #pragma endregion //}
 
 
+namespace utils {
+
 /*
     MyClass (dtor virtuel)
        ^
@@ -99,4 +101,6 @@ public:
 private:
 	MyClass m1_;
 };
+
+}
 

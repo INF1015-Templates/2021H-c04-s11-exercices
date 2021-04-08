@@ -16,6 +16,8 @@
 using namespace std;
 
 
+namespace utils {
+
 void printDefCtor ( const char* c )
 {
 	printf("%s::%s()" "\n", c, c);
@@ -55,3 +57,6 @@ void printMovAsgn ( const char* c )
 {
 	printf("%s::operator=(%s&&)" "\n", c, c);
 }
+
+}
+
